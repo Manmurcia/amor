@@ -36,7 +36,7 @@ const CONFIG = {
     {
       nombre: "Nuestra Primer Beso",
       fecha: "22 de Diciembre, 2025",
-      desc: "Cada nota me recuerda a ti y a nuestros momentos juntos."
+      desc: "En ese instante, el mundo se detuvo y solo existíamos tú y yo."
     },
     {
       nombre: "Disfrutando de tu compañía",

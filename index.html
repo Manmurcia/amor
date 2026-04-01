@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para Mi Amor</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- Fondo de estrellas -->
+<canvas id="stars-canvas"></canvas>
+<div class="particles" id="particles"></div>
+
+<!-- ============ PANTALLA DE CONTRASEÑA ============ -->
+<div id="lock-screen" class="screen active">
+  <div class="lock-card">
+    <div class="lock-hearts">💕</div>
+    <h1 class="lock-title">Una sorpresa para ti</h1>
+    <div class="lock-hint">
+      <span class="hint-icon">🗝️</span>
+      <p>La contraseña es una fecha que los dos guardamos en el corazón… el día en que todo comenzó.</p>
+    </div>
+    <p class="pin-label">D D / M M / A A A A</p>
+    <div class="pin-row" id="pin-row">
+      <input type="tel" maxlength="1" inputmode="numeric" class="pin-digit" id="p0"/>
+      <input type="tel" maxlength="1" inputmode="numeric" class="pin-digit" id="p1"/>
+      <span class="pin-sep">/</span>
+      <input type="tel" maxlength="1" inputmode="numeric" class="pin-digit" id="p2"/>
+      <input type="tel" maxlength="1" inputmode="numeric" class="pin-digit" id="p3"/>
+      <span class="pin-sep">/</span>
+      <input type="tel" maxlength="1" inputmode="numeric" class="pin-digit" id="p4"/>
+      <input type="tel" maxlength="1" inputmode="numeric" class="pin-digit" id="p5"/>
+      <input type="tel" maxlength="1" inputmode="numeric" class="pin-digit" id="p6"/>
+      <input type="tel" maxlength="1" inputmode="numeric" class="pin-digit" id="p7"/>
+    </div>
+    <p class="pin-error" id="pin-error"></p>
+  </div>
+</div>
+
+<!-- ============ PANTALLA PRINCIPAL ============ -->
+<div id="main-screen" class="screen">
+
+  <!-- HERO -->
+  <section class="section hero-section">
+    <div class="glow-orb orb1"></div>
+    <div class="glow-orb orb2"></div>
+    <h1 class="hero-title" id="hero-title">Para Mi Amor, <span id="nombre-amada">Mariana</span></h1>
+    <div class="hero-card">
+      <p id="hero-msg">Mi vida, este día especial es para celebrar el amor que compartimos. Esta sorpresa es para ti, porque eres mi mundo.</p>
+    </div>
+    <div class="quote-card">
+      <p id="hero-quote">"Tú eres mi hogar, mi refugio, mi amor por siempre."</p>
+    </div>
+    <div class="hearts-float" id="hearts-float"></div>
+  </section>
+
+  <!-- CARTA -->
+  <section class="section carta-section">
+    <div class="carta-box">
+      <div class="carta-header">
+        <span class="carta-icon">💌</span>
+        <h2 class="carta-titulo">Carta de Mi Corazón</h2>
+      </div>
+      <p class="carta-texto" id="carta-texto">Mi amor, cada momento contigo es un tesoro. Desde el día que te conocí, supe que eras mi destino. Gracias por cada risa, cada abrazo, cada sueño compartido. Hoy y siemprecelebramos nuestro amor, y prometo amarte siempre.</p>
+      <p class="carta-firma" id="carta-firma">Con todo mi amor, Manuel</p>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section class="section galeria-section">
+    <h2 class="section-title">Nuestros Momentos</h2>
+    <div class="galeria-slider">
+      <button class="slider-btn prev" id="prev-btn">&#8249;</button>
+      <div class="galeria-track" id="galeria-track">
+        <div class="galeria-slide active">
+          <div class="galeria-placeholder">
+            <span>📸</span>
+            <p>Foto 1</p>
+            <small>Cambia esta imagen en el JS</small>
+          </div>
+        </div>
+        <div class="galeria-slide">
+          <div class="galeria-placeholder">
+            <span>📸</span>
+            <p>Foto 2</p>
+            <small>Cambia esta imagen en el JS</small>
+          </div>
+        </div>
+        <div class="galeria-slide">
+          <div class="galeria-placeholder">
+            <span>📸</span>
+            <p>Foto 3</p>
+            <small>Cambia esta imagen en el JS</small>
+          </div>
+        </div>
+      </div>
+      <button class="slider-btn next" id="next-btn">&#8250;</button>
+    </div>
+    <div class="galeria-dots" id="galeria-dots"></div>
+  </section>
+
+  <!-- RECUERDOS -->
+  <section class="section recuerdos-section">
+    <h2 class="section-title">Nuestros Recuerdos</h2>
+    <div class="recuerdos-list" id="recuerdos-list">
+      <!-- generado por JS -->
+    </div>
+  </section>
+
+  <!-- CONTADOR DESDE EL NOVIAZGO -->
+  <section class="section contador-section">
+    <h2 class="section-title">Tiempo Juntos</h2>
+    <div class="contador-display" id="contador-noviazgo">
+      <div class="cnt-unit"><span class="cnt-num" id="nv-y">0</span><span class="cnt-lbl">Años</span></div>
+      <span class="cnt-sep">:</span>
+      <div class="cnt-unit"><span class="cnt-num" id="nv-m">0</span><span class="cnt-lbl">Meses</span></div>
+      <span class="cnt-sep">:</span>
+      <div class="cnt-unit"><span class="cnt-num" id="nv-d">0</span><span class="cnt-lbl">Días</span></div>
+      <span class="cnt-sep">:</span>
+      <div class="cnt-unit"><span class="cnt-num" id="nv-h">0</span><span class="cnt-lbl">Horas</span></div>
+      <span class="cnt-sep">:</span>
+      <div class="cnt-unit"><span class="cnt-num" id="nv-min">00</span><span class="cnt-lbl">Min</span></div>
+      <span class="cnt-sep">:</span>
+      <div class="cnt-unit"><span class="cnt-num" id="nv-seg">00</span><span class="cnt-lbl">Seg</span></div>
+    </div>
+    <p class="contador-sub">Desde el 17 de octubre de 2025, cada segundo ha sido un regalo.</p>
+  </section>
+
+  <!-- CONTADOR DESDE EL NACIMIENTO -->
+  <section class="section nacimiento-section">
+    <h2 class="section-title">Tiempo Desde Que Naciste</h2>
+    <div class="contador-display digital" id="contador-nacimiento">
+      <span id="nb-total">0000:00:00:00</span>
+    </div>
+    <p class="contador-sub" id="nacimiento-sub">Días : Horas : Min : Seg</p>
+    <p class="nacimiento-msg">Desde que naciste, has sido lo más preciado en mi vida, mi amor.</p>
+  </section>
+
+  <!-- FUTURO -->
+  <section class="section futuro-section">
+    <h2 class="section-title">Nuestro Futuro</h2>
+    <div class="futuro-card">
+      <p>Imagina los días que vendrán: viajes, risas, y un amor que crece cada día. Contigo, todo es posible.</p>
+    </div>
+  </section>
+
+  <!-- BARRA DE AMOR -->
+  <section class="section amor-section">
+    <h2 class="section-title amor-title">Nuestro Amor</h2>
+    <div class="amor-bar-wrap">
+      <div class="amor-bar" id="amor-bar"></div>
+    </div>
+    <p class="amor-pct">100% Tuyo, siempre</p>
+    <p class="footer-msg">Hecho con todo mi corazón para ti. 💕</p>
+  </section>
+
+</div><!-- /main-screen -->
+
+<script src="script.js"></script>
+</body>
+</html>
